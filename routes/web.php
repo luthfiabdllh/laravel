@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\category;
 use App\Http\Controllers\CRUD;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,6 @@ Route::get('/website', function () {
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/routes', [CRUD::class, 'index']);
+
+Route::get('/postsCateg', [category::class, 'index']);
+
