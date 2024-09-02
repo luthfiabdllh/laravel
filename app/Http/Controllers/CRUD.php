@@ -11,7 +11,7 @@ class CRUD extends Controller
      */
     public function index()
     {
-        //
+        return view('posts');
     }
 
     /**
