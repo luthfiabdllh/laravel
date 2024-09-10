@@ -9,6 +9,6 @@ class category extends Controller
 {
     public function index()
     {
-         return view('categoryPosts');
+        return view('categoryPosts');
     }
 }
