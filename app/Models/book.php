@@ -10,4 +10,5 @@ class book extends Model
     use HasFactory;
 
     protected $table = 'books';
+    protected $dates = 'publication_date';
 }

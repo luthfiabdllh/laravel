@@ -6,6 +6,8 @@ use App\Http\Controllers\CRUD;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
+use function Laravel\Prompts\search;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,14 +40,14 @@ Route::get('/routes', [CRUD::class, 'index']);
 Route::get('/postsCateg', [category::class, 'index']);
 
 
-Route::get('/buku', [BookController::class, 'index']);
+Route::get('/perpustakaan', [BookController::class, 'index']);
+Route::get('/perpustakaan', [BookController::class, 'search'])->name('buku.search');
 
 
-Route::get('/buku/create', [BookController::class, 'create'])->name('buku.create');
-Route::post('/buku', [BookController::class, 'store'])->name('buku.store');
+Route::get('/perpustakaan/create', [BookController::class, 'create'])->name('buku.create');
+Route::post('/perpustakaan', [BookController::class, 'store'])->name('buku.store');
 
-Route::delete('/buku/{id}', [BookController::class, 'destroy'])->name('buku.destroy');
+Route::delete('/perpustakaan/{id}', [BookController::class, 'destroy'])->name('buku.destroy');
 
-Route::get('/buku/edit{id}', [BookController::class, 'edit'])->name('buku.edit');
-Route::put('/buku/{id}', [BookController::class, 'update'])->name('buku.update');
-
+Route::get('/perpustakaan/edit{id}', [BookController::class, 'edit'])->name('buku.edit');
+Route::put('/perpustakaan/{id}', [BookController::class, 'update'])->name('buku.update');

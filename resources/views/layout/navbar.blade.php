@@ -1,5 +1,5 @@
 {{-- navbar --}}
-<nav class="navbar bg-primary fixed-top text-white">
+<nav class="navbar bg-primary text-white">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Offcanvas navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

@@ -41,7 +41,7 @@
                             @csrf
                             @method('DELETE')
                             <button onclick="return confirm('yakin mau hapus?')" type="submit" class="btn btn-danger">Hapus</button>
-                        </form>                           
+                        </form>
                     </td>
                 </tr>
             @endforeach
@@ -50,8 +50,8 @@
 
     <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Buku</a>
 
-    <h3>Jumlah Buku : {{ $jumlahBuku }}</h3>
-    <h3>Total Harga : {{"Rp. ".number_format($totalPrice, 2, ',', '.') }}</h3>
+    <h6>Jumlah Buku : {{ $jumlahBuku }}</h6>
+    <h6>Total Harga : {{"Rp. ".number_format($totalPrice, 2, ',', '.') }}</h6>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
