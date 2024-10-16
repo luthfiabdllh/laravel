@@ -9,22 +9,73 @@
             <h1>Daftar Buku</h1>
 
             @if(Session::has('created'))
-                <div class="alert alert-success">{{ Session::get('created') }}</div>
+                <div class="modal fade" id="createdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ Session::get('created') }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
             @if(Session::has('updated'))
-                <div class="alert alert-success">{{ Session::get('updated') }}</div>
+                <div class="modal fade" id="createdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ Session::get('updated') }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
             @if(Session::has('deleted'))
-                <div class="alert alert-success">{{ Session::get('deleted') }}</div>
+                <div class="modal fade" id="createdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ Session::get('deleted') }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
 
-            <form action="{{ route('buku.search') }}">
-                <div class="input-group mb-3" style="width: 30%; float: right;">
-                    <input type="text" name="kata" class="form-control" placeholder="Cari...." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+            <div class="d-flex justify-content-between mb-3">
+                <div>
+                    <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Buku</a>
                 </div>
-            </form>
-
+                <div>
+                    <form action="{{ route('buku.search') }}">
+                        <div class="input-group">
+                            <input type="text" name="kata" class="form-control" placeholder="Cari...." aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <table class="table table-light table-striped align-middle text-center">
                 <thead>
                     <tr class="table-primary">
@@ -62,16 +113,12 @@
                 </tbody>
             </table>
 
-            <div>{{ $data_book->links() }}</div>
-
             <div class="d-flex">
                 <h6 class="mx-3">Jumlah Buku : {{ $jumlahBuku }}</h6>
                 <h6>Total Harga : {{"Rp. " . number_format($totalPrice, 2, ',', '.') }}</h6>
             </div>
 
-            <div class="d-flex justify-content-end">
-                <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Buku</a>
-            </div>
+            <div>{{ $data_book->links() }}</div>
     </div>
 @else
 <div class="container mt-5">
@@ -80,6 +127,12 @@
     </div>
     <a href="{{ route('buku.search') }}" class="btn btn-warning">Kembali</a>
 </div>
-
 @endif
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var createdModal = new bootstrap.Modal(document.getElementById('createdModal'));
+        createdModal.show();
+    });
+</script>
+
